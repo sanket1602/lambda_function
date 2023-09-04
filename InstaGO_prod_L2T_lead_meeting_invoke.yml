@@ -29,10 +29,6 @@ Parameters:
     Type: String
     Description: sourcecodebucketkey
     Default: lambda_2/InstaGO_prod_L2T_lead_meeting_invoke.zip	
-  dynamostackname:
-    Type: String
-    Description: dynamostackname  
-    Default: InstaGO-prod-l1-lead-meeting-ddb  
 Resources:
   MyRole: 
     Type: "AWS::IAM::Role"
