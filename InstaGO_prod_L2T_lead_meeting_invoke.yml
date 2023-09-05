@@ -153,7 +153,7 @@ Resources:
           Value: !Ref tagenvironment
         - Key: Owner
           Value: Monish 
-        - Key: Production
+        - Key: Prod
           Value: ""
         - Key: InstaGO
           Value: ""
