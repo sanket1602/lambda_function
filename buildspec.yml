@@ -6,7 +6,7 @@ phases:
   build:
     commands:
       - echo "upload zip package to s3 bucket...."
-      - aws s3 cp lambda_2.zip s3://github-actions-1-dmo/lambda_function_new/lambda_2.zip
+      - aws s3 cp lambda_2.zip s3://github-actions-1-dmo/lambda_2/lambda_2.zip
       - echo "sleep 1 min"
       - sleep 1
   post_build:
