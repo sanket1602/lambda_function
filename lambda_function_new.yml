@@ -140,7 +140,7 @@ Resources:
         S3Key: !Ref sourcecodebucketkey
       Tags:
         - Key: Project
-          Value: InstaGO
+          Value: InstaGO1
         - Key: Name
           Value: !Ref LambdaFunctionName
         - Key: Environment
