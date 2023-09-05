@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: "Instago prod Thin SSO qliksense lambda CFT"
+Description: "lambda_2"
 Parameters:
   LambdaFunctionName: 
     Type: String
