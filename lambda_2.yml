@@ -112,12 +112,6 @@ Resources:
             Resource:
               - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_h1_lead_details*
               - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_lead_reallocation_transfer_journey*
-              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_phone_number_audit*
-              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_H1_thin_app_access_logs*
-              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_h1_user_partner_mapping*
-              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_h1_partner_master*
-              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_h1_fls_app_version_data*
-              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_h1_user_calendar*
          - ##DyanmoDB Stream Access
             Sid: VisualEditor3
             Effect: Allow
