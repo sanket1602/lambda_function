@@ -204,10 +204,6 @@ Resources:
           Value: !Ref tagenvironment
         - Key: Owner
           Value: Monish Parekh
-        - Key: Production
-          Value: ""
-        - Key: InstaGO
-          Value: ""
   LambdaFunctionLogGroup:
     Type: "AWS::Logs::LogGroup"
     DependsOn: "MyLambda"
