@@ -10,5 +10,5 @@ phases:
   post_build:
     commands:
       - echo "Updating lambda Function..."
-      - aws cloudformation create-stack --stack-name lambda-function-new-LambdaFunction --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value=lambda_function_new --template-body file://lambda_function_new.yml --capabilities CAPABILITY_NAMED_IAM
+      - aws cloudformation update-stack --stack-name lambda-function-new-LambdaFunction --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value=lambda_function_new --template-body file://lambda_function_new.yml --capabilities CAPABILITY_NAMED_IAM
       - echo "DONE!!Thanks!!"
