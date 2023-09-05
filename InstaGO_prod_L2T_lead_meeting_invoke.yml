@@ -80,7 +80,6 @@ Resources:
             Resource:
               - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_l1_lead_details*
               - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_l2_meeting_details*
-              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_h1_lead_details*
           - ##DyanmoDB Stream Access
             Sid: VisualEditor2
             Effect: Allow
