@@ -6,11 +6,11 @@ phases:
   build:
     commands:
       - echo "upload zip package to s3 bucket...."
-      - aws s3 cp lambda-function-new-LambdaFunction-MyLambda-1b2ZhSM0XqUs.zip s3://github-actions-1-dmo/lambda_2/
+      - aws s3 cp lambda_2.zip s3://github-actions-1-dmo/lambda_function_new/lambda_2.zip
       - echo "sleep 1 min"
       - sleep 1
   post_build:
     commands:
       - echo "Updating lambda Function..."
-      - aws cloudformation update-stack --stack-name lambda-function-new-LambdaFunction --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value=lambda_function_new --template-body file://lambda_function_new.yml --capabilities CAPABILITY_NAMED_IAM
+      - aws cloudformation update-stack --stack-name lambda-2-lambdafuntion --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value=lambda_2 --template-body file://lambda_2.yml --capabilities CAPABILITY_NAMED_IAM
       - echo "DONE!!Thanks!!"
