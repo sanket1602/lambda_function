@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: "InstaGO prod L2T layer lead meeting invoke CFT test lambda deployment"
+Description: "InstaGO prod L2T layer lead meeting invoke CFT test lambda deployment2"
 Parameters:
   LambdaFunctionName: 
     Type: String
