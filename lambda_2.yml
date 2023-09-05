@@ -122,14 +122,6 @@ Resources:
               - dynamodb:ListStreams
             Resource:
               - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_h1_lead_details/stream/*
-              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_lead_reallocation_transfer_journey/stream/* 
-              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_phone_number_audit/stream/* 
-              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_H1_thin_app_access_logs/stream/* 
-              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_h1_user_partner_mapping/stream/* 
-              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_h1_partner_master/stream/* 
-              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_h1_fls_app_version_data/stream/* 
-              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_h1_user_calendar/stream/*               
-         -  ##CloudWatch access
             Sid: VisualEditor4         
             Action: cloudwatch:*
             Effect: Allow
