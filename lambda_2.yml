@@ -1,0 +1,212 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: "Instago prod Thin SSO qliksense lambda CFT test deployment"
+Parameters:
+  LambdaFunctionName: 
+    Type: String
+    Description: Name of the Lambda Function to be created
+    Default: lambda_2
+  tagenvironment:
+    Type: String
+    Description: This is tagenvironment
+    Default: Production
+  s3bucket:
+    Type: String
+    Description: Name of s3 bucket 
+    Default: github-actions-1-dmo
+  reportingdatapath:
+    Type: String
+    Description: Name of reporting data path
+    Default: mis_data_reporting
+  sourcecodebucketname:
+    Type: String
+    Description: sourcecodebucketname
+    Default: github-actions-1-dmo
+  sourcecodebucketkey:
+    Type: String
+    Description: sourcecodebucketkey
+    Default: lambda_function_new/lambda_2.zip
+Resources:
+  MyRole: 
+    Type: "AWS::IAM::Role"
+    Properties: 
+      AssumeRolePolicyDocument: 
+        Version: "2012-10-17"
+        Statement: 
+          - 
+            Effect: "Allow"
+            Principal: 
+              Service: 
+                - "lambda.amazonaws.com"
+            Action: 
+              - "sts:AssumeRole"
+      Path: "/"
+      RoleName: !Join 
+            - ''
+            - - !Ref LambdaFunctionName
+              - _LambdaRole
+      Tags:
+        - Key: Project
+          Value: InstaGO
+        - Key: Application
+          Value: InstaGO          
+        - Key: Name
+          Value: !Join
+            - ''
+            - - !Ref LambdaFunctionName
+              - _LambdaRole
+        - Key: Environment
+          Value: !Ref tagenvironment
+        - Key: Owner
+          Value: Monish Parekh
+        - Key: InstaGO
+          Value: ""
+        - Key: Production
+          Value: ""          
+  MyRolePolicies: 
+    Type: "AWS::IAM::Policy"
+    DependsOn: MyRole
+    Properties: 
+      PolicyName: InstaGO_prod_generic_mis_data_incremental_LambdaRole_Policy
+      PolicyDocument: 
+        Version: "2012-10-17"
+        Statement: 
+         -  ##S3BucketAccess
+            Sid: VisualEditor0
+            Effect: Allow
+            Action:
+              - s3:ListMultipartUploadParts
+              - s3:ListBucket
+              - s3:HeadBucket
+              - s3:GetObject
+              - s3:GetBucketLocation
+              - s3:GetObjectVersion
+              - s3:PutObject
+            Resource:
+              - arn:aws:s3:::github-actions-1-dmo
+              - arn:aws:s3:::github-actions-1-dmo/*
+         - ##EC2 access
+            Sid: VisualEditor1      
+            Effect: Allow
+            Action: 
+              - ec2:DescribeNetworkInterfaces
+              - ec2:CreateNetworkInterface
+              - ec2:DeleteNetworkInterface
+              - ec2:DescribeInstances
+              - ec2:AttachNetworkInterface
+            Resource: "*"
+         - ##DyanmoDB Access
+            Sid: VisualEditor2
+            Action:
+              - dynamodb:PutItem
+              - dynamodb:BatchWriteItem
+              - dynamodb:UpdateItem
+              - dynamodb:DescribeTable
+              - dynamodb:GetItem
+              - dynamodb:BatchGetItem
+              - dynamodb:Scan
+              - dynamodb:ConditionCheckItem
+              - dynamodb:Query
+              - dynamodb:DescribeGlobalTableSettings
+              - dynamodb:DescribeGlobalTable
+            Effect: Allow
+            Resource:
+              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_h1_lead_details*
+              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_lead_reallocation_transfer_journey*
+              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_phone_number_audit*
+              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_H1_thin_app_access_logs*
+              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_h1_user_partner_mapping*
+              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_h1_partner_master*
+              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_h1_fls_app_version_data*
+              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_h1_user_calendar*
+         - ##DyanmoDB Stream Access
+            Sid: VisualEditor3
+            Effect: Allow
+            Action:
+              - dynamodb:GetRecords
+              - dynamodb:GetShardIterator
+              - dynamodb:DescribeStream
+              - dynamodb:ListStreams
+            Resource:
+              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_h1_lead_details/stream/*
+              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_lead_reallocation_transfer_journey/stream/* 
+              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_phone_number_audit/stream/* 
+              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_H1_thin_app_access_logs/stream/* 
+              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_h1_user_partner_mapping/stream/* 
+              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_h1_partner_master/stream/* 
+              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_h1_fls_app_version_data/stream/* 
+              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_h1_user_calendar/stream/*               
+         -  ##CloudWatch access
+            Sid: VisualEditor4         
+            Action: cloudwatch:*
+            Effect: Allow
+            Resource: "*"
+         -  ## CloudWatch Logs access
+            Sid: VisualEditor5
+            Effect: Allow
+            Action:
+              - logs:List*
+              - cloudwatch:List*
+              - logs:List*
+              - logs:GetLogRecord
+              - logs:DescribeLogStreams
+              - logs:DescribeSubscriptionFilters
+              - logs:StartQuery
+              - logs:DescribeMetricFilters
+              - logs:GetLogDelivery
+              - logs:CreateLogStream
+              - logs:TagLogGroup
+              - logs:GetLogEvents
+              - logs:FilterLogEvents
+              - logs:DescribeResourcePolicies
+              - logs:DescribeDestinations
+              - logs:DescribeQueries
+              - logs:UntagLogGroup
+              - logs:DescribeLogGroups
+              - logs:StopQuery
+              - logs:TestMetricFilter
+              - logs:PutLogEvents
+              - logs:CreateLogGroup
+              - logs:DescribeExportTasks
+              - logs:GetQueryResults
+              - logs:PutRetentionPolicy
+              - logs:GetLogGroupFields
+            Resource: "*" 
+      Roles: 
+        - 
+          Ref: "MyRole"
+  MyLambda:
+    Type: AWS::Lambda::Function
+    DependsOn: MyRolePolicies
+    DeletionPolicy: Retain    
+    Properties:
+      Environment:
+        Variables:
+          bucket_name: !Ref s3bucket
+          reporting_data_path: !Ref reportingdatapath 
+      FunctionName: !Ref LambdaFunctionName
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.8
+      Role: {"Fn::GetAtt" : ["MyRole", "Arn"] }       
+      Description: ''
+      MemorySize: 128
+      Timeout: 900
+      Code: 
+        S3Bucket: !Ref sourcecodebucketname
+        S3Key: !Ref sourcecodebucketkey
+      Tags:
+        - Key: Project
+          Value: InstaGO
+        - Key: Application
+          Value: InstaGO          
+        - Key: Name
+          Value: !Ref LambdaFunctionName
+        - Key: Environment
+          Value: !Ref tagenvironment
+        - Key: Owner
+          Value: Monish Parekh
+  LambdaFunctionLogGroup:
+    Type: "AWS::Logs::LogGroup"
+    DependsOn: "MyLambda"
+    Properties:
+      RetentionInDays: 7
+      LogGroupName: !Join ["", ["/aws/lambda/", !Ref LambdaFunctionName]]
