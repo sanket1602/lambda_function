@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: "InstaGO prod L2T layer lead meeting invoke CFT"
+Description: "InstaGO prod L2T layer lead meeting invoke CFT1"
 Parameters:
   LambdaFunctionName: 
     Type: String
