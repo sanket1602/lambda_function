@@ -48,10 +48,6 @@ Resources:
           Value: !Ref tagenvironment
         - Key: Owner
           Value: Deepak
-        - Key: InstaGO
-          Value: ""
-        - Key: Production
-          Value: ""          
   MyRolePolicies: 
     Type: "AWS::IAM::Policy"
     DependsOn: MyRole
@@ -90,7 +86,6 @@ Resources:
               - dynamodb:ListStreams
             Resource:
               - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_l1_lead_meeting*
-              - arn:aws:dynamodb:ap-south-1:251899213637:table/InstaGO_prod_l1_lead_meeting/stream/*
           - ##CloudWatch access
             Sid: VisualEditor3           
             Action: cloudwatch:*
