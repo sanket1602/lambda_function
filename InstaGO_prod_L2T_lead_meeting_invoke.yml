@@ -152,7 +152,7 @@ Resources:
         - Key: Environment
           Value: !Ref tagenvironment
         - Key: Owner
-          Value: Deepak
+          Value: Deepak_pawar
         - Key: Prod
           Value: ""
         - Key: InstaGO
