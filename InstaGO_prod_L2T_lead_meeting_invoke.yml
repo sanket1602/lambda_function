@@ -47,7 +47,7 @@ Resources:
         - Key: Environment
           Value: !Ref tagenvironment
         - Key: Owner
-          Value: Monish 
+          Value: Deepak
         - Key: InstaGO
           Value: ""
         - Key: Production
@@ -152,7 +152,11 @@ Resources:
         - Key: Environment
           Value: !Ref tagenvironment
         - Key: Owner
+<<<<<<< HEAD
           Value: Monish 
+=======
+          Value: Monish
+>>>>>>> 33006faaf6f5798bdb02db36204554cb7a1ab37e
         - Key: Production
           Value: ""
         - Key: InstaGO
