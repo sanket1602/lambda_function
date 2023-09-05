@@ -16,7 +16,7 @@ Parameters:
   sourcecodebucketkey:
     Type: String
     Description: sourcecodebucketkey
-    Default: lambda_2/lambda_function_new.zip	
+    Default: lambda_2/lambda_function_new.zip
 Resources:
   MyRole: 
     Type: "AWS::IAM::Role"
