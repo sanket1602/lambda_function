@@ -152,7 +152,7 @@ Resources:
         - Key: Environment
           Value: !Ref tagenvironment
         - Key: Owner
-          Value: Monish Parekh
+          Value: Monish
         - Key: Production
           Value: ""
         - Key: InstaGO
