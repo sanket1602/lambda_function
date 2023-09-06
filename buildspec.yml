@@ -9,14 +9,14 @@ phases:
   build:
     commands:
       - echo "Zipping deployment package..."
-      - zip -g lambda_3.zip lambda_function.py
+      - zip -g "%env(Lambda_function_name)%".zip lambda_function.py
   post_build:
     commands:
       - echo "Updating lambda Function..."
-      - aws lambda update-function-code --function-name lambda_3 --zip-file fileb://lambda_3.zip
+      - aws lambda update-function-code --function-name "%env(Lambda_function_name)%" --zip-file fileb://"%env(Lambda_function_name)%".zip
       - echo "DONE!!"
   pre_build:
     commands:
       - echo "Updating lambda Function..."
-      - aws cloudformation update-stack --stack-name lambda-3-lambdafuntion --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value=lambda_3 --template-body file://lambda_3.yml --capabilities CAPABILITY_NAMED_IAM
+      - aws cloudformation update-stack --stack-name "%env(CFT_name)%" --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value="%env(Lambda_function_name)%" --template-body file://"%env(Lambda_function_name)%".yml --capabilities CAPABILITY_NAMED_IAM
       - echo "DONE!!"
