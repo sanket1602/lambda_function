@@ -5,9 +5,17 @@ phases:
       python: 3.11
   build:
     commands:
+      - echo "Install unzip package"
+      - apt-get install unzip
+      - echo "Download AWS cli"
+      - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      - echo "unzip AWS cli package"
+      - unzip awscliv2.zip
+      - echo "Install AWS cli"
+      - sudo ./aws/install
       - echo "upload zip package to s3 bucket...."
       - aws s3 cp lambda_2.zip s3://github-actions-1-dmo/lambda_2/lambda_2.zip
-      - echo "sleep 1 min"
+      - echo "sleep 5 min"
       - sleep 5
   post_build:
     commands:
