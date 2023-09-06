@@ -57,11 +57,7 @@ Resources:
         - Key: Environment
           Value: !Ref tagenvironment
         - Key: Owner
-          Value: Monish Parekh
-        - Key: InstaGO
-          Value: ""
-        - Key: Production
-          Value: ""          
+          Value: Monish Parekh          
   MyRolePolicies: 
     Type: "AWS::IAM::Policy"
     DependsOn: MyRole

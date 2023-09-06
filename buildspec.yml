@@ -9,7 +9,7 @@ phases:
   build:
     commands:
       - echo "Zipping deployment package..."
-      - zip -g lambda_1.zip lambda_function.py
+      - zip -g lambda_2.zip lambda_function.py
   code_build:
     commands:
       - echo "Updating lambda Function..."
@@ -19,4 +19,4 @@ phases:
     commands:
       - echo "Updating lambda Function..."
       - aws cloudformation update-stack --stack-name lambda-2-lambdafuntion --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value=lambda_2 --template-body file://lambda_2.yml --capabilities CAPABILITY_NAMED_IAM
-      - echo "DONE!!Thanks!!"
+      - echo "DONE!!"
