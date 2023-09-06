@@ -3,21 +3,19 @@ phases:
   install:
     runtime-versions:
       python: 3.11
+    commands:
+      - echo "Installing dependencies..."
+      - pip install -r requirements.txt -t lib
   build:
     commands:
-      - echo "Install unzip package"
-      - apt-get install unzip
-      - echo "Download AWS cli"
-      - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-      - echo "unzip AWS cli package"
-      - unzip awscliv2.zip
-      - echo "Install AWS cli"
-      - sudo ./aws/install
-      - echo "upload zip package to s3 bucket...."
-      - aws s3 cp lambda_2.zip s3://github-actions-1-dmo/lambda_2/lambda_2.zip
-      - echo "sleep 5 min"
-      - sleep 5
-  post_build:
+      - echo "Zipping deployment package..."
+      - zip -g lambda_1.zip lambda_function.py
+  code_build:
+    commands:
+      - echo "Updating lambda Function..."
+      - aws lambda update-function-code --function-name lambda_2 --zip-file fileb://lambda_2.zip
+      - echo "DONE!!"
+  cft_build:
     commands:
       - echo "Updating lambda Function..."
       - aws cloudformation update-stack --stack-name lambda-2-lambdafuntion --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value=lambda_2 --template-body file://lambda_2.yml --capabilities CAPABILITY_NAMED_IAM
