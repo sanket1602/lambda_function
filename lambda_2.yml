@@ -8,7 +8,7 @@ Parameters:
   tagenvironment:
     Type: String
     Description: This is tagenvironment
-    Default: Production
+    Default: UAT
   s3bucket:
     Type: String
     Description: Name of s3 bucket 
@@ -57,7 +57,7 @@ Resources:
         - Key: Environment
           Value: !Ref tagenvironment
         - Key: Owner
-          Value: Monish Parekh          
+          Value: Deepak          
   MyRolePolicies: 
     Type: "AWS::IAM::Policy"
     DependsOn: MyRole
@@ -185,7 +185,7 @@ Resources:
         - Key: Environment
           Value: !Ref tagenvironment
         - Key: Owner
-          Value: Deepak Pawar
+          Value: Deepak
   LambdaFunctionLogGroup:
     Type: "AWS::Logs::LogGroup"
     DependsOn: "MyLambda"
