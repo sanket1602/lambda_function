@@ -18,5 +18,5 @@ phases:
   pre_build:
     commands:
       - echo "Updating lambda Function..."
-      - aws cloudformation create-stack --stack-name lambda-2-lambdafuntion --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value=lambda_3 --template-body file://lambda_3.yml --capabilities CAPABILITY_NAMED_IAM
+      - aws cloudformation update-stack --stack-name lambda-3-lambdafuntion --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value=lambda_3 --template-body file://lambda_3.yml --capabilities CAPABILITY_NAMED_IAM
       - echo "DONE!!"

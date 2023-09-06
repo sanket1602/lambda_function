@@ -187,7 +187,7 @@ Resources:
         - Key: Owner
           Value: Deepak
         - Key: Describe
-          Value: mis update
+          Value: test lambda_3
   LambdaFunctionLogGroup:
     Type: "AWS::Logs::LogGroup"
     DependsOn: "MyLambda"
