@@ -8,7 +8,7 @@ phases:
       - pip install -r requirements.txt -t lib
   build:
     commands:
-      - echo run run.sh file
+      - echo "run run.sh file"
       - sh run.sh
       - echo "Zipping deployment package..."
       - zip -g ${Lambda_function_name} lambda_function.py
