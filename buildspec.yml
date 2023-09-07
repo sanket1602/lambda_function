@@ -12,12 +12,12 @@ phases:
       - sh run.sh
       - echo "Zipping deployment package..."
       - zip -g ${Lambda_function_name} lambda_function.py
-  post_build:
+  pre_build:
     commands:
       - echo "Updating code update..."
       - aws lambda update-function-code --function-name ${Lambda_function_name} --zip-file fileb://${Lambda_function_name}.zip
       - echo "DONE!!"
-  pre_build:
+  post_build:
     commands:
       - echo "Updating lambda Function..."
       - aws cloudformation update-stack --stack-name ${CFT_name} --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value=${Lambda_function_name} --template-body file://${Lambda_function_name}.yml --capabilities CAPABILITY_NAMED_IAM
