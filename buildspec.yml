@@ -8,15 +8,17 @@ phases:
       - pip install -r requirements.txt -t lib
   build:
     commands:
+      - echo run run.sh file
+      - sh run.sh
       - echo "Zipping deployment package..."
-      - zip -g "%env(Lambda_function_name)%".zip lambda_function.py
+      - zip -g ${Lambda_function_name} lambda_function.py
   post_build:
     commands:
-      - echo "Updating lambda Function..."
-      - aws lambda update-function-code --function-name "%env(Lambda_function_name)%" --zip-file fileb://"%env(Lambda_function_name)%".zip
+      - echo "Updating code update..."
+      - aws lambda update-function-code --function-name ${Lambda_function_name} --zip-file fileb://${Lambda_function_name}.zip
       - echo "DONE!!"
   pre_build:
     commands:
       - echo "Updating lambda Function..."
-      - aws cloudformation update-stack --stack-name "%env(CFT_name)%" --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value="%env(Lambda_function_name)%" --template-body file://"%env(Lambda_function_name)%".yml --capabilities CAPABILITY_NAMED_IAM
+      - aws cloudformation update-stack --stack-name ${CFT_name} --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value=${Lambda_function_name} --template-body file://${Lambda_function_name}.yml --capabilities CAPABILITY_NAMED_IAM
       - echo "DONE!!"
