@@ -8,17 +8,15 @@ phases:
       - pip install -r requirements.txt -t lib
   build:
     commands:
-      - echo "run run.sh file"
-      - sh run.sh
       - echo "Zipping deployment package..."
-      - zip -g ${Lambda_function_name} lambda_function.py
+      - zip -g lambda-3 lambda_function.py
   pre_build:
     commands:
       - echo "Updating code update..."
-      - aws lambda update-function-code --function-name ${Lambda_function_name} --zip-file fileb://${Lambda_function_name}.zip
+      - aws lambda update-function-code --function-name lambda-3 --zip-file fileb://lambda-3.zip
       - echo "DONE!!"
   post_build:
     commands:
       - echo "Updating lambda Function..."
-      - aws cloudformation update-stack --stack-name ${CFT_name} --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value=${Lambda_function_name} --template-body file://${Lambda_function_name}.yml --capabilities CAPABILITY_NAMED_IAM
+      - aws cloudformation update-stack --stack-name lambda-3-lambdafuntion --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value=lambda-3 --template-body file://lambda-3.yml --capabilities CAPABILITY_NAMED_IAM
       - echo "DONE!!"

@@ -187,7 +187,7 @@ Resources:
         - Key: Owner
           Value: Deepak
         - Key: description
-          Value: ${description}
+          Value: test demo for hdfc
   LambdaFunctionLogGroup:
     Type: "AWS::Logs::LogGroup"
     DependsOn: "MyLambda"
