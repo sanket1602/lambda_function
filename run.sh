@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Read lambda name and lambda cftname from your shell file
-# source run.sh
+source run.sh
 
 # Setthe environment variables
 export LAMBDA_NAME="lambda_3"
