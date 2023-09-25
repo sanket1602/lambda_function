@@ -1,22 +1,36 @@
 version: 0.2
+
+env:
+  variables:
+    LAMBDA_NAME: ""
+    LAMBDA_CFT_NAME: ""
+    LAMBDA_YML_NAME: ""
 phases:
+  pre_build:
+    commands:
+      - chmod +x run.sh
+      - source ./run.sh
+
   install:
     runtime-versions:
       python: 3.11
     commands:
       - echo "Installing dependencies..."
       - pip install -r requirements.txt -t lib
+
   build:
     commands:
       - echo "Zipping deployment package..."
-      - zip -g lambda_3 lambda_function.py
+      - zip -g "$LAMBDA_NAME" lambda_function.py
+
   pre_build:
     commands:
       - echo "Updating code update..."
-      - aws lambda update-function-code --function-name lambda_3 --zip-file fileb://lambda_3.zip
+      - aws lambda update-function-code --function-name "$LAMBDA_NAME" --zip-file fileb://"$LAMBDA_NAME".zip
       - echo "DONE!!"
-  post_build:
-    commands:
-      - echo "Updating lambda Function..."
-      - aws cloudformation update-stack --stack-name lambda-3-lambdafuntion --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value=lambda_3 --template-body file://lambda_3.yml --capabilities CAPABILITY_NAMED_IAM
-      - echo "DONE!!"
+
+  # post_build:
+    # commands:
+      # - echo "Updating lambda Function..."
+      # - aws cloudformation update-stack --stack-name "$LAMBDA_CFT_NAME" --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value="$LAMBDA_NAME" --template-body file://"$LAMBDA_YML_NAME" --capabilities CAPABILITY_NAMED_IAM
+      # - echo "DONE!!"
