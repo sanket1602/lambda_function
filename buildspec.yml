@@ -23,7 +23,7 @@ phases:
     commands:
       - echo "Zipping deployment package..."
       - ls -l
-      - zip -r "$LAMBDA_NAME".zip lambda_function.py
+      - zip -r "$LAMBDA_ZIP_NAME" lambda_function.py
       - ls -l
 
   build:
