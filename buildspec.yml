@@ -5,6 +5,7 @@ env:
     LAMBDA_NAME: ""
     LAMBDA_CFT_NAME: ""
     LAMBDA_YML_NAME: ""
+    LAMBDA_ZIP_NAME: ""
 phases:
   pre_build:
     commands:
