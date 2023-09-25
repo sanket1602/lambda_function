@@ -23,17 +23,17 @@ phases:
     commands:
       - echo "Zipping deployment package..."
       - ls -l
-      - zip -r "$LAMBDA_ZIP_NAME" lambda_function.py
+      - zip -r "$LAMBDA_NAME".zip lambda_function.py
       - ls -l
 
   build:
     commands:
       - echo "Updating code update..."
-      - aws lambda update-function-code --function-name "$LAMBDA_NAME" --zip-file fileb://"$LAMBDA_ZIP_NAME"
+      - aws lambda update-function-code --function-name "$LAMBDA_NAME" --zip-file fileb://"$LAMBDA_NAME".zip
       - echo "DONE!!"
 
   # post_build:
     # commands:
       # - echo "Updating lambda Function..."
-      # - aws cloudformation update-stack --stack-name "$LAMBDA_CFT_NAME" --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value="$LAMBDA_NAME" --template-body file://"$LAMBDA_YML_NAME" --capabilities CAPABILITY_NAMED_IAM
+      # - aws cloudformation update-stack --stack-name "$LAMBDA_CFT_NAME" --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value="$LAMBDA_NAME" --template-body file://"$LAMBDA_NAME".yml --capabilities CAPABILITY_NAMED_IAM
       # - echo "DONE!!"
