@@ -4,3 +4,4 @@
 export LAMBDA_NAME="lambda_3"
 export LAMBDA_CFT_NAME="lambda-3-lambdafuntion"
 export LAMBDA_YML_NAME="lambda_3.yml"
+export LAMBDA_ZIP_NAME="lambda_3.zip"
