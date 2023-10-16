@@ -14,7 +14,7 @@ phases:
       - ./run.sh
       - echo "Zipping deployment package..."
       - ls -l
-      - echo "$LAMBDA_NAME"
+      - echo $LAMBDA_NAME
       - zip -r $LAMBDA_NAME.zip lambda_function.py
       - ls -l
 
