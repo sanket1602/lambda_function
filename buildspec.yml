@@ -11,17 +11,13 @@ phases:
   pre_build:
     commands:
       - chmod +x run.sh
-      - ./run.sh
-      - echo "Zipping deployment package..."
-      - ls -l
-      - echo $LAMBDA_NAME
-      - zip -r $LAMBDA_NAME.zip lambda_function.py
       - ls -l
 
   build:
     commands:
       - echo "Updating code update..."
-      - aws lambda update-function-code --function-name $LAMBDA_NAME --zip-file fileb://$LAMBDA_NAME.zip
+      - ./run.sh
+      - ls -l
       - echo "DONE!!"
 
   # post_build:
