@@ -6,6 +6,10 @@ env:
     LAMBDA_CFT_NAME: ""
     LAMBDA_YML_NAME: ""
     LAMBDA_ZIP_NAME: ""
+
+exported-variables:
+  - myenvvars.env
+  
 phases:
   pre_build:
     commands:
