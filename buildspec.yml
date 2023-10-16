@@ -4,7 +4,6 @@ phases:
   pre_build:
     commands:
       - chmod +x run.sh
-      - source ./run.sh
       - ./run.sh
 
   install:
