@@ -27,13 +27,13 @@ phases:
     commands:
       - echo "Zipping deployment package..."
       - ls -l
-      - zip -r $LAMBDA_NAME.zip lambda_function.py
+      - zip -r lambda_3.zip lambda_function.py
       - ls -l
 
   build:
     commands:
       - echo "Updating code update..."
-      - aws lambda update-function-code --function-name $LAMBDA_NAME --zip-file fileb://$LAMBDA_NAME.zip
+      - aws lambda update-function-code --function-name lambda_3 --zip-file fileb://lambda_3.zip
       - echo "DONE!!"
 
   # post_build:
