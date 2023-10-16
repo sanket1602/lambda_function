@@ -3,7 +3,7 @@
     "environmentVariables": [
       {
         "name": "LAMBDA_DESCRIPTION",
-        "value": "deployment completed",
+        "value": "deployment done",
       },
 	  {
         "name": "LAMBDA_NAME",
