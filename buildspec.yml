@@ -1,14 +1,11 @@
 version: 0.2
 
-env:
-  exported-variables:
-    - myenvvars.env
-  
 phases:
   pre_build:
     commands:
       - chmod +x run.sh
       - source ./run.sh
+      - ./run.sh
 
   install:
     runtime-versions:
