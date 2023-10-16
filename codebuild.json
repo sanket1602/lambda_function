@@ -1,0 +1,18 @@
+{
+  "environment": {
+    "environmentVariables": [
+      {
+        "name": "LAMBDA_DESCRIPTION",
+        "value": "deployment completed",
+      },
+	  {
+        "name": "LAMBDA_NAME",
+        "value": "lambda_3"
+      },
+      {
+        "name": "LAMBDA_CFT_NAME",
+        "value": "lambda-3-lambdafuntion"
+      },
+    ]
+  }
+}
