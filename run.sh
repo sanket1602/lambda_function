@@ -10,4 +10,5 @@ LAMBDA_DESCRIPTION="deployment completed"
 
 zip -r $LAMBDA_NAME.zip lambda_function.py
 aws lambda update-function-code --function-name $LAMBDA_NAME --zip-file fileb://$LAMBDA_NAME.zip
+aws lambda tag-resource --resource arn:aws:lambda:ap-south-1:607373392948:function:lambda_3 --tags Department=Marketing,CostCenter=1234ABCD
 aws cloudformation update-stack --stack-name $LAMBDA_CFT_NAME --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value=$LAMBDA_CFT_NAME --template-body file://$LAMBDA_NAME.yml --capabilities CAPABILITY_NAMED_IAM
