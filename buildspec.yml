@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    LAMBDA_NAME: ""
+    LAMBDA_NAME: "lambda_3"
     LAMBDA_CFT_NAME: ""
     LAMBDA_YML_NAME: ""
     LAMBDA_ZIP_NAME: ""
@@ -27,7 +27,7 @@ phases:
     commands:
       - echo "Zipping deployment package..."
       - ls -l
-      - zip -r lambda_3.zip lambda_function.py
+      - zip -r $LAMBDA_NAME.zip lambda_function.py
       - ls -l
 
   build:
