@@ -1,11 +1,6 @@
 version: 0.2
 
 phases:
-  pre_build:
-    commands:
-      - chmod +x run.sh
-      - ./run.sh
-
   install:
     runtime-versions:
       python: 3.11
@@ -15,6 +10,8 @@ phases:
 
   pre_build:
     commands:
+      - chmod +x run.sh
+      - ./run.sh
       - echo "Zipping deployment package..."
       - ls -l
       - echo "$LAMBDA_NAME"
