@@ -167,7 +167,7 @@ Resources:
           reporting_data_path: !Ref reportingdatapath 
       FunctionName: !Ref LambdaFunctionName
       Handler: lambda_function.lambda_handler
-      Runtime: python3.8
+      Runtime: python3.9
       Role: {"Fn::GetAtt" : ["MyRole", "Arn"] }       
       Description: ''
       MemorySize: 512
