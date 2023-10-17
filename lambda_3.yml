@@ -186,8 +186,6 @@ Resources:
           Value: !Ref tagenvironment
         - Key: Owner
           Value: Deepak
-        - Key: Description
-          Value: $LAMBDA_DESCRIPTION
   LambdaFunctionLogGroup:
     Type: "AWS::Logs::LogGroup"
     DependsOn: "MyLambda"
