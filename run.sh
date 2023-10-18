@@ -8,7 +8,9 @@ LAMBDA_CFT_NAME="lambda-3-lambdafuntion"
 # export LAMBDA_ZIP_NAME="lambda_3.zip"
 
 LAMBDA_VALUE= `jq -r ".Parameter_Key" "variables.json"`
+echo $LAMBDA_VALUE
 LAMBDA_NAME= `jq -r ".Parameter_Value" "variables.json"`
+echo $LAMBDA_NAME
 
 
 zip -r $LAMBDA_NAME.zip lambda_function.py
