@@ -12,6 +12,8 @@ phases:
     commands:
       - chmod +x run.sh
       - ls -l
+      - chmod +x variables.json
+      - ls -l
 
   build:
     commands:
