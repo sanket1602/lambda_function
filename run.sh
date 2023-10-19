@@ -15,5 +15,5 @@ while IFS= read -r lambda_info; do
     echo "LAMBDA_CFT_NAME: $LAMBDA_CFT_NAME"
     echo "LAMBDA_DESCRIPTION: $LAMBDA_DESCRIPTION"
     echo "--------------------------------"
-	aws cloudformation update-stack --stack-name $LAMBDA_CFT_NAME --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value=$LAMBDA_CFT_NAME --template-body file://$LAMBDA_NAME.yml --parameters file://variables.json --capabilities CAPABILITY_NAMED_IAM
+	aws cloudformation update-stack --stack-name $LAMBDA_CFT_NAME --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value=$LAMBDA_CFT_NAME --template-body file://$LAMBDA_NAME.yml --parameters file://$input_file --capabilities CAPABILITY_NAMED_IAM
 done
