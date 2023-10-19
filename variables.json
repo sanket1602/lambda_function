@@ -1,14 +1,9 @@
 {
-  "employees": [
+  "lambda": [
     {
-      "name": "John Doe",
-      "age": 30,
-      "email": "john.doe@example.com"
-    },
-    {
-      "name": "Jane Smith",
-      "age": 25,
-      "email": "jane.smith@example.com"
+      "LAMBDA_NAME": "lambda_3",
+      "LAMBDA_CFT_NAME": "lambda-3-lambdafuntion",
+      "LAMBDA_DESCRIPTION": "done"
     }
   ]
 }
