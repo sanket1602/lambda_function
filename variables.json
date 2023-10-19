@@ -1,3 +1,9 @@
-{"Parameter_Key": "LAMBDA_NAME",
-"Parameter_Value": "lambda_3"
+{
+  "lambda_details": [
+    {
+      "LAMBDA_NAME": "lambda_3",
+      "LAMBDA_DESCRIPTION": "deployment",
+      "LAMBDA_CFT_NAME": "lambda-3-lambdafuntion"
+    }
+  ]
 }
