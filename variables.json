@@ -2,12 +2,6 @@
   "lambda": [
     {
       "LAMBDA_NAME": "lambda_3",
-      "LAMBDA_CFT_NAME": "lambda-3-lambdafuntion",
-      "LAMBDA_DESCRIPTION": "done"
-    },
-	{
-	  "ParameterKey": "LAMBDA_DESCRIPTION",
-	  "ParameterValue": "lambda update"
-	}
+    }
   ]
 }

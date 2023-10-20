@@ -7,18 +7,18 @@ while IFS= read -r lambda_info; do
  
     LAMBDA_NAME=$(echo "$lambda_info" | cut -d ',' -f1)
     LAMBDA_CFT_NAME=$(echo "$lambda_info" | cut -d ',' -f2)
-    LAMBDA_DESCRIPTION=$(echo "$lambda_info" | cut -d ',' -f3)
- 
-    echo "LAMBDA_NAME: $LAMBDA_NAME"
-	echo "zip -r $LAMBDA_NAME.zip lambda_function.py"
+	
+	echo "======================================"  
+	echo "======================================"  	
+	echo "LAMBDA_NAME: $LAMBDA_NAME"
+	echo "======================================"  
+	echo "======================================"   
+	echo "Convert lambda_function file to .zip"
 	zip -r $LAMBDA_NAME.zip lambda_function.py
-    echo "--------------------------------"
-	echo "aws lambda update-function-code --function-name $LAMBDA_NAME --zip-file fileb://$LAMBDA_NAME.zip"
+    echo "======================================"
+    echo "======================================"
+	echo "Update new lambda code on mention Lambda"
 	aws lambda update-function-code --function-name $LAMBDA_NAME --zip-file fileb://$LAMBDA_NAME.zip
-    echo "--------------------------------"
-    echo "LAMBDA_CFT_NAME: $LAMBDA_CFT_NAME"
-    echo "LAMBDA_DESCRIPTION: $LAMBDA_DESCRIPTION"
-	echo "aws cloudformation update-stack --stack-name $LAMBDA_CFT_NAME --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value=$LAMBDA_CFT_NAME --template-body file://$LAMBDA_NAME.yml --parameters file://$input_file --capabilities CAPABILITY_NAMED_IAM"
-	aws cloudformation update-stack --stack-name $LAMBDA_CFT_NAME --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value=$LAMBDA_CFT_NAME --template-body file://$LAMBDA_NAME.yml --parameters file://$input_file --capabilities CAPABILITY_NAMED_IAM
-    echo "--------------------------------"
+    echo "======================================"
+    echo "======================================"
 done

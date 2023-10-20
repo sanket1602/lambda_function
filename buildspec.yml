@@ -11,19 +11,10 @@ phases:
   pre_build:
     commands:
       - chmod +x run.sh
-      - ls -l
       - chmod +x variables.json
-      - ls -l
-
+      
   build:
     commands:
       - echo "Updating code update..."
       - ./run.sh
-      - ls -l
       - echo "DONE!!"
-
-  # post_build:
-    # commands:
-      # - echo "Updating lambda Function..."
-      # - aws cloudformation update-stack --stack-name $LAMBDA_CFT_NAME --tags Key=Project,Value=InstaGo Key=Owner,Value=MonishParekh Key=Environment,Value=Production Key=Application,Value=InstaGo Key=Name,Value=$LAMBDA_NAME --template-body files://$LAMBDA_NAME.yml --capabilities CAPABILITY_NAMED_IAM
-      # - echo "DONE!!"
