@@ -1,9 +1,12 @@
 #!/bin/bash
  
 input_file="variables.json"
- 
-jq -r '.lambda[] | "\(.LAMBDA_NAME)"' "$input_file" |
+
+jq -r '.lambda[] | "\(.LAMBDA_NAME) "' "$input_file" |
 while IFS= read -r lambda_info; do
+
+# jq -r '.lambda[] | "\(.LAMBDA_NAME)"' "$input_file" |
+# while IFS= read -r lambda_info; do
  
     LAMBDA_NAME=$(echo "$lambda_info" | cut -d ',' -f1)
 	
