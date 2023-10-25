@@ -6,7 +6,6 @@ jq -r '.lambda[] | "\(.LAMBDA_NAME)"' "$input_file" |
 while IFS= read -r lambda_info; do
  
     LAMBDA_NAME=$(echo "$lambda_info" | cut -d ',' -f1)
-    LAMBDA_CFT_NAME=$(echo "$lambda_info" | cut -d ',' -f2)
 	
 	echo "======================================"  
 	echo "======================================"  	
